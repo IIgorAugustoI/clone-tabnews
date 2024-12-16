@@ -21,10 +21,10 @@ async function query(queryObject) {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    console.error("Ocorreu um erro durante a Query. Mais detalhes: \n" + error);
-    throw error;
+    var err = error;
   } finally {
-    await client.end();
+    if (err) console.error(err);
+    else await client.end();
   }
 }
 
