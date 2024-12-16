@@ -8,13 +8,6 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORD,
   });
-  console.log("Credenciais de acessos: ", {
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    user: process.env.POSTGRES_USER,
-    database: process.env.POSTGRES_DB,
-    password: process.env.POSTGRES_PASSWORD,
-  });
 
   try {
     await client.connect();
@@ -23,7 +16,7 @@ async function query(queryObject) {
   } catch (error) {
     var err = error;
   } finally {
-    if (err) console.error(err);
+    if (err) throw err;
     else await client.end();
   }
 }
