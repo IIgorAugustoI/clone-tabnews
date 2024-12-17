@@ -23,7 +23,6 @@ async function status(req, res) {
     values: [databaseName],
   });
   const userActivesValue = queryPgUserActivesResult.rows[0].count;
-  console.log(userActivesValue);
 
   // Response
   res.status(200).json({
